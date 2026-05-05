@@ -1,8 +1,10 @@
 package com.fiap.ec.backend_consultas.service;
+import java.util.List;
+
+import org.springframework.stereotype.Service;
+
 import com.fiap.ec.backend_consultas.model.Paciente;
 import com.fiap.ec.backend_consultas.repository.PacienteRepository;
-import org.springframework.stereotype.Service;
-import java.util.List;
 @Service
 public class PacienteService {
     private final PacienteRepository repository;
@@ -19,6 +21,7 @@ public class PacienteService {
         return repository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Paciente não encontrado"));
     }
+
     public Paciente atualizar(Long id, Paciente pacienteAtualizado) {
         Paciente pacienteExistente = buscarPorId(id);
         pacienteExistente.setNome(pacienteAtualizado.getNome());
